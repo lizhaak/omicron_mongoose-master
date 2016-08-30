@@ -40,6 +40,7 @@ app.controller('BookController', ['$scope', '$http', function ($scope, $http) {
 
   $scope.submitComment = function (id) {
     var data = $scope.newComment;
+    console.log('data', data);
     $http.post('/books/' + id + '/comments', data)
       .then(function () {
         console.log('POST /books/', id, '/comments', data);
@@ -47,6 +48,14 @@ app.controller('BookController', ['$scope', '$http', function ($scope, $http) {
         getBooks();
       });
   }
+
+  // $scope.propertyName = 'title';
+  $scope.reverse = true;
+
+  $scope.sortBy = function(propertyName) {
+    $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+    $scope.propertyName = propertyName;
+  };
 
   /** --- Utility functions --- **/
   function getBooks() {

@@ -12,6 +12,7 @@
     title: { type: String, required: true },
     author: String,
     publishDate: Date,
+    publishedBy: String,
     comments: [Comment]
   });
 
